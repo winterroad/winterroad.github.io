@@ -1,45 +1,44 @@
 <!DOCTYPE html>
-<html>
-  <html lang="fi"
-  <head>
-    <meta charset='utf-8'>
-    <link rel="stylesheet" href="css/myStyles.css">
-    <meta name="description" content="This a page">
-    <meta name="author" content="Ulla-Kaija">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work in progress</title> 
-  </head>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Responsive sidemenu</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js"></script>
 
-  <body>
-    <div class="navi">
-    <!--<img class= "header" src="images/header2.jpg">-->
-    
-      <ul class="naviG">
-          <li><a class="active" href=index.html><img src="images/house.png" alt="Etusivulle" style="width:20px;height:20px;"></a></li>
-                    <li class="dropdown">
-<a href="javascript:void(0)" class="dropbtn">Projektit</a>
-    <div class="dropdown-content">
-      <a href="#">Muistilista</a>
-      <a href="#">Geologation API</a>
-      <a href="#">DOM kilke</a>
-    </div>
-          
-                    <li class="dropdown">
-<a href="javascript:void(0)" class="dropbtn">Python</a>
-    <div class="dropdown-content">
-      <a href="funktio.html">Funktio</a>
-      <a href="lista.html">Lista</a>
-      <a href="sanakirja.html">Sanakirja</a>
-    </div>
-          <li><a href="java.html">Java</a></li>
-          <li><a href="linkit.html">Linkit</a></li>
+</head>
+<body>
+  <nav class="navbar">
+    <span class="open-slide">
+      <a href="#" onclick="openSlideMenu()">
+        <svg width="30" height="30">
+          <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+          <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+          <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+        </svg>
+      </a>
+    </span>
 
-    </div>
-  </li>
-      </ul>
-      
-      <p class="teksti">
-        <img id="image1" src="images/kirjopaivankakkara.jpg">
-      </p>
-  </body>
+    <ul class="navbar-nav">
+      <li><a class="active" href=index.html><img src="images/house.png" alt="Etusivulle" style="width:20px;height:20px;"></a></li>
+      <li><a href="#">Projektit</a></li>
+      <li><a href="#">Linkit</a></li>
+      <li><a href="#">Yhteystiedot</a></li>
+    </ul>
+  </nav>
+  <div id="side-menu" class="side-nav">
+    <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+    <a class="active" href=index.html><img src="images/house.png" alt="Etusivulle" style="width:20px;height:20px;"></a>
+    <a href="#">Projektit</a>
+    <a href="#">Linkit</a>
+    <a href="#">Yhteystiedot</a>
+  </div>
+
+  <div id="main">
+    <h1>Tervetuloa</h1>
+  </div>
+
+</body>
 </html>
