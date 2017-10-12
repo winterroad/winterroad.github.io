@@ -40,12 +40,12 @@ body{
   min-height: 100%;
 }
 
-img{
+/*img{
   z-index:0;
   width:100%
   height:100vh;
   overflow:hidden;
-}
+}*/
 
 .header-overlay{
   height:100vh;
