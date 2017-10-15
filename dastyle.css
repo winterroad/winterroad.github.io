@@ -4,7 +4,7 @@
 
 }
 body{
-  font-family: Raleway;
+  font-family: 'Lora', serif;
   background: #fff;
   /*overflow-x:hidden;*/
 }
@@ -83,10 +83,11 @@ li.dropdown {
 }
 
 h1 {
+  font-family: 'Cinzel', serif;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  padding: 2rem 0 0 0;
+  padding: 2.5rem 0 1.5rem 0;
 }
 
 @media (min-width: 767px){
@@ -166,7 +167,11 @@ footer{
 svg{
   padding: 2rem 0 0 0;
 }
-/* Nämä on lisätty */
+
+
+/* Sivu-palkki */
+
+/*TEE VIELÄ: Sivupalkkiin onclick-avautuvat/sulkeutuvat linkit, nuolet/plusmiinus*/
 
 .side-nav{
   height:100%;
@@ -180,13 +185,12 @@ svg{
   overflow-x:hidden;
   padding-top:60px;
   transition:0.5s;
-  font-family: monospace;
 }
 
 .side-nav a{
   padding: 10px 10px 10px 30px;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 1rem;
   color:#ccc;
   display:block;
   transition:0.3s;

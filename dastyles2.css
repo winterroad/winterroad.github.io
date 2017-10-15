@@ -4,7 +4,7 @@
 
 body{
   margin:0;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Lora', serif;
   font-size:1rem;
   font-weight:normal;
   line-height:1.5;
@@ -75,7 +75,7 @@ body{
 }
 
 .nappi{
-  background: #34b3a0;
+  background: #0086b3;
   color: #fff;
   font-size: 1.2rem;
   padding: 1rem 2rem;
