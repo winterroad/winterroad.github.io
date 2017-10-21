@@ -5,7 +5,7 @@
   <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
-  <link rel="stylesheet" href="dastyle.css">
+  <link href="dastyle.css" rel="stylesheet">
   <script src="JavaScript/main.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,33 +13,33 @@
 </head>
 
 <body>
-  <nav class="navigointi">
-    <span class="open-slide">
-      <img id= "img_header" src="funct_images/header.png">
-      <a href="#" onclick="avaaSivuMenu()">
-        <svg width="30" height="30">
-          <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
-          <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
-          <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
-        </svg>
-      </a>
-    </span>
+    <img id= "img_header" src="funct_images/header.png">
+    <nav class="navigointi">
+      <span class="open-slide">
+        <a href="#" onclick="avaaSivuMenu()">
+          <svg width="30" height="30">
+            <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+            <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+            <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+          </svg>
+        </a>
+      </span>
     <ul class=navigointipalkki>
-        <img id= "img_header" src="funct_images/header.png">
-        <li><a class="active" href=index.html><img src="funct_images/house.png" alt="Etusivulle" style="width:20px;height:20px;"></a></li>
-        <li class="dropdown"><a href="#" class="dropbtn">Projektit</a>
-              <div class="alasvetovalikonsisalto">
-              <a href="videolanding.html">Video-etusivu</a>
-              <a href="#">#</a>
-              </div>
-        </li>
-        <li class="dropdown"><a href="#" class="dropbtn">Linkit</a>
-          <div class="alasvetovalikonsisalto">
-            <a href="opetusvideoita.html">Opetusvideoita</a>
-            <a href="#">#</a>
-          </div>
-        </li>
-    </ul>
+      <li class="paataso"><a href="index.html" class="paatasolinkki"><img src="funct_images/house2.png" alt="Etusivulle"></a></li>
+      <li class="paataso"><a href="#" class="paatasolinkki">Projektit</a>
+        <ul class="alasvetovalikonsisalto">
+          <li><a href="#">Projekti 1</a></li>
+          <li><a href="#">Projekti 2</a></li>
+        </ul>
+      </li>
+      <li class="paataso"><a href="#">Linkit</a>
+        <ul class="alasvetovalikonsisalto">
+          <li><a href="#">Linkit 1</a></li>
+          <li><a href="#">Linkit 2</a></li>
+        </ul>
+      </li>
+      <li class="paataso"><a href="#">Yhteystiedot</a></li>
+      </ul>
   </nav>
 
 <div id="sivu-menu" class="sivu-navi">
@@ -70,9 +70,6 @@
   </div>
 </div>
 
-<svg height="2" width="75%">
-  <line x1="25%" y1="0" x2="100%" y2="0" style="stroke:#d3d3d3;stroke-width:1" />
-</svg>
 <footer>
   Otsikko-kuva on Darian kuva, jonka olen muokannut.
   Alkuperäinen kuva ja muita vapaasti käytettäviä kuvia löytyy Darian sivuilta: http://epicantus.tumblr.com
