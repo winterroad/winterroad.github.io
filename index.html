@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N3GK8ZN');</script>
+<!-- End Google Tag Manager -->
+  <meta name = "description" content = "Ulla-Kaija Talvitie's web development portfolio. Site's purpose is to showcase different HTML, CSS, JavaScript, Ajax etc projects. Like life this site is work in progress."/>
   <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
@@ -9,13 +16,19 @@
   <script src="JavaScript/main.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Winterroad</title>
+  <meta charset="UTF-8">
+  <title>Web Development portfolio</title>
+  <!--[if lt IE 9]><script src="html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>
-    <img id= "img_header" src="funct_images/header.png">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3GK8ZN"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <img id= "img_header" src="header.png">
     <nav class="navigointi">
-      <span class="open-slide">
+      <span class="menuikoni">
         <a href="#" onclick="avaaSivuMenu()">
           <svg width="30" height="30">
             <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
@@ -25,17 +38,17 @@
         </a>
       </span>
     <ul class=navigointipalkki>
-      <li class="paataso"><a href="index.html"><img src="funct_images/house2.png" alt="Etusivulle"></a></li>
+      <li class="paataso"><a href="index.html"><img src="house2.png" alt="Etusivulle"></a></li>
       <li class="paataso"><a href="#">Projektit</a>
         <ul class="alasvetovalikonsisalto">
-          <li></li><a href="videolanding.html">Projekti: Video-sivu</a></li>
-          <li></li><a href="#">#Projekti 2#</a></li>
+          <li><a href="videolanding.html">Projekti: Video-sivu</a></li>
+          <li><a href="#">#Projekti 2#</a></li>
         </ul>
       </li>
       <li class="paataso"><a href="#">Linkit</a>
         <ul class="alasvetovalikonsisalto">
-          <li></li><a href="opetusvideoita.html">Linkit: Opetusvideoita</a></li>
-          <li></li><a href="#">#Linkit 2#</a></li>
+          <li><a href="opetusvideoita.html">Linkit: Opetusvideoita</a></li>
+          <li><a href="#">#Linkit 2#</a></li>
         </ul>
       </li>
       <li class="paataso"><a href="#">Yhteystiedot</a></li>
@@ -44,11 +57,8 @@
 
 <div id="sivu-menu" class="sivu-navi">
    <a href="#" class="btn-close" onclick="suljeSivuMenu()">&times;</a>
-   <a class="" href=index.html><img src="funct_images/house.png" alt="Etusivulle" style="width:20px;height:20px;"></a>
-   <h3>Projektit</h3>
-   <a class="sivulinkit" href="videolanding.html">Video-sivu</a>
-   <h3>Linkit</h3>
-   <a class="sivulinkit" href="opetusvideoita.html">Opetusvideoita</a>
+   <a href="videolanding.html">Video-sivu</a>
+   <a href="opetusvideoita.html">Opetusvideoita</a>
 </div>
 
 <h1>Tämä on sivu, jolla on tekstiä</h1>

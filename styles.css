@@ -1,0 +1,63 @@
+/* add your CSS here */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.card{
+  margin: 40px;
+  padding: 20px;
+  width: 320px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #D6E0B4;
+  -webkit-box-shadow: 9px 14px 18px -1px rgba(0,0,0,0.44);
+  -moz-box-shadow: 9px 14px 18px -1px rgba(0,0,0,0.44);
+  box-shadow: 9px 14px 18px -1px rgba(0,0,0,0.44);
+}
+
+h1{
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem;
+    padding: 5px;
+    text-align: center;
+}
+
+.animal-info{
+  border: 1px solid #000;
+  border-radius: 0 0 5px 5px;
+  margin:10px 10px 5px 10px;
+  padding: 10px;
+  font-family: 'Lora', serif;
+  background-color: #DEEDD3;
+  text-align: center;
+}
+
+.interesting-fact{
+  margin-bottom: 10px;
+  font-style:italic;
+}
+
+.list{
+  list-style: none;
+  margin: 0px;
+  padding: 2px;
+  text-align: left;
+}
+
+li{
+  padding: 3px;
+}
+
+.title{
+  font-weight: bold;
+}
+
+img{
+  margin:auto;
+  display: block;
+  border: 1px solid #000;
+}
+.end {
+  padding: 5px;
+}
