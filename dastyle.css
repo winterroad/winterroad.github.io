@@ -117,7 +117,7 @@ h3 {
 
   .container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0 1.5rem 0 2.5rem;
     flex-wrap: wrap;
     flex-direction: row;
