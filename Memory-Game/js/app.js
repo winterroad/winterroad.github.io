@@ -1,5 +1,5 @@
 //Game- variable does not change. Cards will be added to game.
-const game = document.getElementById("game-container");
+const GAME = document.getElementById("game-container");
 const moveCounter = document.getElementById("moveCounter");
 const pairsCounter = document.getElementById("pairsCounter");
 const reset = document.getElementById("resetButton");
@@ -19,13 +19,26 @@ const closeModal = document.querySelector(".close");
 //All pictures in an array. Includes all the needed html for the "card", including the card div that is the thing that "masks" the picture.
 //TODO: Put this info in a db, mongo db. Pictures fetched with randomized id, which is 1 to [max card id].
 //TODO: Smaller pictures, 100 X 100 as a option.
-const allPictures = ["<div class='card unselected'></div><img src='img/01-150.png' alt='Long haired kitten. Front profile.'>", "<div class='card unselected'></div><img src='img/02-150.png' alt='A cat and a bag.'>", "<div class='card unselected'></div><img src='img/03-150.png' alt='A kittensleeps below shelf.'>",
-"<div class='card unselected'></div><img src='img/04-150.png' alt='A big happy cat sleeps on a carpet.'>", "<div class='card unselected'></div><img src='img/05-150.png' alt='A cat 5'>", "<div class='card unselected'></div><img src='img/06-150.png' alt='A young, mostly white cat sleeps on the sofa.'>", "<div class='card unselected'></div><img src='img/07-150.png' alt='A long cat sleeps half inside in a bicycle basket.'>",
-"<div class='card unselected'></div><img src='img/08-150.png' alt='A mostly white kitten lays on a sofa and licks his lips.'>", "<div class='card unselected'></div><img src='img/09-150.png' alt='A fat cat sleeps in a roll.'>", "<div class='card unselected'></div><img src='img/10-150.png' alt='A long haired young cat meows.'>", "<div class='card unselected'></div><img src='img/11-150.png' alt='A cat scratches a mat.'>",
-"<div class='card unselected'></div><img src='img/12-150.png' alt='A big cat sleeps on corner and looks happy.'>", "<div class='card unselected'></div><img src='img/13-150.png' alt='A longhaired cat poses like sphynx, side profile.'>", "<div class='card unselected'></div><img src='img/14-150.png' alt='A cat lays on a living room table, partly hanging over.'>", "<div class='card unselected'></div><img src='img/15-150.png' alt='A big cat and a kitten sleep on sofa.'>",
-"<div class='card unselected'></div><img src='img/16-150.png' alt='A cat sleeps in front of a computer display.'>"];
+const ALL_PICTURES = [
+  "<div class='card unselected'></div><img src='img/01-150.png' alt='Long haired kitten. Front profile.'>",
+  "<div class='card unselected'></div><img src='img/02-150.png' alt='A cat and a bag.'>",
+  "<div class='card unselected'></div><img src='img/03-150.png' alt='A kittensleeps below shelf.'>",
+  "<div class='card unselected'></div><img src='img/04-150.png' alt='A big happy cat sleeps on a carpet.'>",
+  "<div class='card unselected'></div><img src='img/05-150.png' alt='Two cats eating beside each other.'>",
+  "<div class='card unselected'></div><img src='img/06-150.png' alt='A young, mostly white cat sleeps on the sofa.'>",
+  "<div class='card unselected'></div><img src='img/07-150.png' alt='A long cat sleeps half inside in a bicycle basket.'>",
+  "<div class='card unselected'></div><img src='img/08-150.png' alt='A mostly white kitten lays on a sofa and licks his lips.'>",
+  "<div class='card unselected'></div><img src='img/09-150.png' alt='A fat cat sleeps in a roll.'>",
+  "<div class='card unselected'></div><img src='img/10-150.png' alt='A long haired young cat meows.'>",
+  "<div class='card unselected'></div><img src='img/11-150.png' alt='A cat scratches a mat.'>",
+  "<div class='card unselected'></div><img src='img/12-150.png' alt='A big cat sleeps on corner and looks happy.'>",
+  "<div class='card unselected'></div><img src='img/13-150.png' alt='A longhaired cat poses like sphynx, side profile.'>",
+  "<div class='card unselected'></div><img src='img/14-150.png' alt='A cat lays on a living room table, partly hanging over.'>",
+  "<div class='card unselected'></div><img src='img/15-150.png' alt='A big cat and a kitten sleep on sofa.'>",
+  "<div class='card unselected'></div><img src='img/16-150.png' alt='A cat sleeps in front of a computer display.'>"
+];
 
-let cardsInGame = 8; //How many different cards . CardsInGame x 2 = all cards in the game.
+let cardsInGame = 1; //How many different cards . CardsInGame x 2 = all cards in the game.
 let pairsFound;
 let stars;
 let startTime;
@@ -35,18 +48,9 @@ let move2;
 let pic1;
 let pic2;
 
-
-
-init();
-reset.addEventListener('click', resetGame);
-
-//Add evenlistener to parent. With event delegation, no need to assign every child their own listener.
-game.addEventListener('click', chooseCard);
+playGame();
 
 function init(){
-
-  updateStartValues();
-  resetMovePic();
 
   let chosenPictures = [];
   //Lets select the pictures (1 each). After this these are added to game in randomized order (2 each). -> function createGame().
@@ -54,11 +58,13 @@ function init(){
 
   //Create a game based  on these pictures.
   createGame(chosenPictures);
-  startTime = Date.now();
+  resetMovePic();
+  updateStartValues();
 }
 
 function updateStartValues(){
   //Reset values
+  startTime = Date.now();
   pairsFound = 0;
   pairsCounter.textContent = " " + pairsFound;
   stars = 3;
@@ -83,7 +89,7 @@ function generateRandomPictures(num){
   let picArr = [];
   let picture = "";
   //Lets copy info from the original pic array, so the original array is not modified.
-  let arrayForRandomizing = allPictures.slice(0);
+  let arrayForRandomizing = ALL_PICTURES.slice(0);
   let randomArraySize;
 
   //Repeat num times (cardsInGame)
@@ -136,13 +142,22 @@ function createGame(chosenPictures){
     fragment.appendChild(elementToBeAdded);
   }
   //Add the document fragment that has all the divs with pic-info to the game-div.
-  game.appendChild(fragment);
+  GAME.appendChild(fragment);
+}
+
+function playGame(){
+  //Initialize the game.
+  init();
+  //Add evenlistener to parent. With event delegation, no need to assign every child their own listener.
+  GAME.addEventListener('click', chooseCard);
+  //If the player wants to start the game from start.
+  reset.addEventListener('click', resetGame);
 }
 
 function resetGame(){
   //Reset board, did not use remove (node.remove()) as IE does not understand it. So going old school.
-  while (game.firstChild) {
-    game.removeChild(game.firstChild);
+  while (GAME.firstChild) {
+    GAME.removeChild(GAME.firstChild);
   }
   //create a new game
   init();
@@ -207,11 +222,10 @@ function updatingClasses() {
   } else {
       move1.classList.add("unselected");
       move2.classList.add("unselected");
-  }
+    }
   resetMovePic();
   }
-  }
-
+}
 
   function convertMillis(ms){
     //Whole minutes are milliseconds divided by 60000 rounded by Math-floor to whole minutes.
@@ -223,7 +237,6 @@ function updatingClasses() {
     return (mins + ":" + (secs < 10 ? "0" : "") + secs);
 
     //Above ternary returns the "same" as if/else below
-    //endTime
     //if(secs < 10){
     //   return mins + ":" + "0" + secs;
     //} else{
