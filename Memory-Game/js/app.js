@@ -38,7 +38,7 @@ const ALL_PICTURES = [
   "<div class='card unselected'></div><img src='img/16-150.png' alt='A cat sleeps in front of a computer display.'>"
 ];
 
-let cardsInGame = 1; //How many different cards . CardsInGame x 2 = all cards in the game.
+let cardsInGame = 8; //How many different cards . CardsInGame x 2 = all cards in the game.
 let pairsFound;
 let stars;
 let startTime;
