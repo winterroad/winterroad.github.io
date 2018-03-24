@@ -17,29 +17,63 @@ header {
   text-transform: uppercase;
 }
 
-#starsCounter{
-  display: inline-block;
-  width: 5rem;
-  text-align: center;
-}
+  button{
+    font-family: 'Montserrat', sans-serif;
+    border: solid 2px #fff;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: #4682b4;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.2rem;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+  }
 
-#moveCounter{
-  display: inline-block;
-  width: 3rem;
-  text-align: center;
-}
+  button:hover{
+    background-color: #fff;
+    color: #4682b4;
+  }
 
-#pairsCounter{
-  display: inline-block;
-  width: 3rem;
-  text-align: center;
-}
+  button:active{
+    border: solid 2px #fff;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: #4682b4;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.2rem;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+  }
 
-#time{
-  display: inline-block;
-  width: 12rem;
-  text-align: center;
-}
+  #starsCounter{
+    display: inline-block;
+    width: 5rem;
+    text-align: center;
+  }
+
+  #moveCounter{
+    display: inline-block;
+    width: 3rem;
+    text-align: center;
+  }
+
+  #pairsCounter{
+    display: inline-block;
+    width: 3rem;
+    text-align: center;
+  }
+
+  #time{
+    display: inline-block;
+    width: 12rem;
+    text-align: center;
+  }
 
 h1{
   width:100%;
