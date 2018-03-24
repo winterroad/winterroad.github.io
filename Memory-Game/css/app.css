@@ -66,8 +66,9 @@ h1{
   -webkit-justify-content: center;
   justify-content: center;
   align-content: center;
-  margin: 2rem auto;
-  border: 2px solid #fff;
+  margin: 1rem auto;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
   border-radius: 5px;
 }
 
@@ -84,7 +85,7 @@ h1{
     width: 150px;
     background-color: #fff;
     color: #333;
-    margin: 2rem;
+    margin: 1rem;
   }
 
     .card {
@@ -111,19 +112,14 @@ h1{
       }
 
       .paired {
-        /*z-index: -1*/
         font-size: 1.5rem;
         text-align: center;
         line-height: 9rem;
         font-weight: bold;
-
-        /*opacity: 0.5*/
-
       }
 
-      /*TODO:*/
       .paired + img {
-          opacity: 0.5;
+        opacity: 0.5;
       }
 
 .popUpWindow {

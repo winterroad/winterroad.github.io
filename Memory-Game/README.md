@@ -58,6 +58,7 @@ Great Cat Memory Game is a project for [Udacity Front-End Web Developer Nanodegr
 
 ## Future development - TODOs
 
+- Cards as objects/use of objects.
 - Degree of difficulty: Easy - Medium - Hard - Levels (how many cards, how many points related to "moves")
 - Game will start / create a game "board" after start/choosing the degree of the difficulty
 - CSS animations
@@ -72,6 +73,8 @@ Great Cat Memory Game is a project for [Udacity Front-End Web Developer Nanodegr
 
 - When cards are clicked with fast pace, sometimes card can be left in selected state. This probably is because update in updatingClasses
 do not have time to run before the move1 and/or move2 values have been updated (chooseCard function is higher in the execute stack).
+
+Workarounds: shortened the timeout time, made a visual tip, that maybe slows the player down, stops to wait if the paired up comes up. This is not solution but lessens the problem at the moment.
 
 > If I would need a
 > awesome quote.
