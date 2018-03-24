@@ -8,9 +8,8 @@ body {
 }
 
 /* TODO- container that centers the element with flex.*/
-#tools {
+header {
   width: 100%;
-  /*margin: 0 auto;*/
   text-align: center;
   align-items: center;
   color: #fff;
@@ -112,16 +111,19 @@ h1{
       }
 
       .paired {
-        z-index: -1;
-        /*Other possibility:
-        opacity: 1
-        */
+        /*z-index: -1*/
+        font-size: 1.5rem;
+        text-align: center;
+        line-height: 9rem;
+        font-weight: bold;
+
+        /*opacity: 0.5*/
 
       }
 
       /*TODO:*/
       .paired + img {
-
+          opacity: 0.5;
       }
 
 .popUpWindow {
@@ -130,9 +132,6 @@ h1{
   /*height: 60%;*/
   border-radius: 5px;
   background: #e5e4e2;
-  -webkit-box-shadow: 3px 7px 44px 3px rgba(0,0,0,0.75);
-  -moz-box-shadow: 3px 7px 44px 3px rgba(0,0,0,0.75);
-  box-shadow: 3px 7px 44px 3px rgba(0,0,0,0.75);
   /* Will be shown on the top (0, 200)*/
   z-index: 200;
   /* To keep the popup fixed on the screen */
@@ -143,9 +142,18 @@ h1{
   visibility: hidden;
 }
 
-.text{
-  margin: 1rem;  
-}
+  .text{
+    margin: 1rem;
+  }
+
+  /* TODO: */
+  button{
+
+  }
+
+  button:hover{
+    cursor: pointer;
+  }
 
  .close{
      text-align: right;
@@ -155,6 +163,7 @@ h1{
 
  .close:hover{
   font-weight: bold;
+  cursor: pointer;
  }
 
  .overlay {
