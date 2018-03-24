@@ -37,8 +37,9 @@ const ALL_PICTURES = [
   "<div class='card unselected'></div><img src='img/15-150.png' alt='A big cat and a kitten sleep on sofa.'>",
   "<div class='card unselected'></div><img src='img/16-150.png' alt='A cat sleeps in front of a computer display.'>"
 ];
-
-let cardsInGame = 8; //How many different cards . CardsInGame x 2 = all cards in the game.
+//How many different cards . CardsInGame x 2 = all cards in the game.
+//TODO: Game asks how many pairs/cards.
+let cardsInGame = 8;
 let pairsFound;
 let stars;
 let startTime;
@@ -50,7 +51,7 @@ let pic2;
 
 playGame();
 
-function init(){
+function initialize(){
 
   let chosenPictures = [];
   //Lets select the pictures (1 each). After this these are added to game in randomized order (2 each). -> function createGame().
@@ -58,7 +59,9 @@ function init(){
 
   //Create a game based  on these pictures.
   createGame(chosenPictures);
+  //Reset move1, move2, pic1 and pic2 values.
   resetMovePic();
+  //Updates the start values.
   updateStartValues();
 }
 
@@ -68,12 +71,29 @@ function updateStartValues(){
   pairsFound = 0;
   pairsCounter.textContent = " " + pairsFound;
   stars = 3;
-  starsCounter.textContent =  " ✰ ✰ ✰ ";
+  paintTheStars(stars);
   endTime = 0;
   moves = 0;
   moveCounter.textContent = " " + moves;
   time.textContent = " ";
-  winning = false;
+
+}
+
+function paintTheStars(howMany){
+  switch (howMany) {
+    case 3:
+    starsCounter.textContent =  " ✰ ✰ ✰ ";
+    break;
+    case 2:
+    starsCounter.textContent =  " ✰ ✰ ";
+    break;
+    case 1:
+    starsCounter.textContent =  " ✰ ";
+    break;
+    case 0:
+    starsCounter.textContent =  0;
+    break;
+  }
 }
 
 function resetMovePic(){
@@ -86,7 +106,7 @@ function resetMovePic(){
 //Generate chosenPicture-array (includes picture once).
 function generateRandomPictures(num){
   //Empty array for randomized pic-info
-  let picArr = [];
+  let randomPics = [];
   let picture = "";
   //Lets copy info from the original pic array, so the original array is not modified.
   let arrayForRandomizing = ALL_PICTURES.slice(0);
@@ -101,11 +121,11 @@ function generateRandomPictures(num){
     let picIndex = Math.floor(Math.random()*randomArraySize);
     //Let's use the index to get pic-info from array, then the item in that index will be removed, so it it will not be used again in the game.
     picture = arrayForRandomizing.splice(picIndex, 1);
-    //Push picture-info into picArr
-    picArr.push(picture);
+    //Push picture-info into randomPics
+    randomPics.push(picture);
   }
   //Return the array
-  return picArr;
+  return randomPics;
 }
 
 //Function for creating a game.
@@ -122,6 +142,7 @@ function createGame(chosenPictures){
   for(let i=0; i < allCardsNum; i++){
     //As the size of the array will change we have to check the size of the array, so we do not pick a index that is out of bounds.
     let allCardsSize = allCards.length;
+    //SHUFFLE :)
     //DOTO: all use randomize function that use for all randomizing needs.
     //Lets randomize an index.
     index = Math.floor(Math.random()*allCardsSize);
@@ -146,8 +167,8 @@ function createGame(chosenPictures){
 }
 
 function playGame(){
-  //Initialize the game.
-  init();
+  //initialize the game.
+  initialize();
   //Add evenlistener to parent. With event delegation, no need to assign every child their own listener.
   GAME.addEventListener('click', chooseCard);
   //If the player wants to start the game from start.
@@ -160,27 +181,29 @@ function resetGame(){
     GAME.removeChild(GAME.firstChild);
   }
   //create a new game
-  init();
+  initialize();
 }
 
 //In choose a card-function card is revealed with class selected, if it is not .selected already.
 function chooseCard(e) {
 
-  if(e.target && e.target.nodeName == "DIV" && e.target.className == "card unselected"){
+  if(/*e.target && e.target.nodeName == "DIV" &&*/ e.target.className == "card unselected"){
     e.target.classList.add("selected");
     e.target.classList.remove("unselected");
 
-    if(move1===""){
+    if(move1==""){
       move1 = e.target;
       pic1 = move1.nextSibling.alt;
-    } else if (move2==="") {
+    } else if (move2=="") {
         move2 = e.target;
         pic2 = move2.nextSibling.alt;
       }
-
-    //Setting timeout so player has time to see the other card.
-    setTimeout(updatingClasses, 500);
-} }
+}
+    if (move1!="" && move2!=""){
+      //Setting timeout so player has time to see the other card.
+      setTimeout(updatingClasses, 300);
+    }
+}
 
 function checkScore(){
   //Change to inline
@@ -197,8 +220,6 @@ function checkScore(){
 }
 
 function updatingClasses() {
-
-  if (move1!="" && move2!=""){
     //TODO: Make update moves function.
     moves++;
     moveCounter.textContent = " " + moves + " ";
@@ -209,23 +230,29 @@ function updatingClasses() {
   if(pic1 == pic2){
       pairsFound++;
       move1.classList.add("paired");
+      move1.textContent = "paired";
       move2.classList.add("paired");
+      move2.textContent = "paired";
       pairsCounter.textContent = " " + pairsFound + " ";
 
       if(pairsFound >= cardsInGame) {
-         let endTime = Date.now()-startTime;
-         endTime = convertMillis(endTime);
-         time.textContent = "You finished in " + endTime;
-         updateModalValues(pairsFound, moves, stars, endTime);
-         showPopUp();
+         setTimeout(allPairsFound, 500);
       }
+
   } else {
       move1.classList.add("unselected");
       move2.classList.add("unselected");
     }
   resetMovePic();
   }
-}
+
+  function allPairsFound(){
+    let endTime = Date.now()-startTime;
+    endTime = convertMillis(endTime);
+    time.textContent = "You finished in " + endTime;
+    updateModalValues(pairsFound, moves, stars, endTime);
+    showPopUp();
+  }
 
   function convertMillis(ms){
     //Whole minutes are milliseconds divided by 60000 rounded by Math-floor to whole minutes.
