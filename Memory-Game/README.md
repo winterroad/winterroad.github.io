@@ -1,6 +1,8 @@
 # Great Cat Memory Game
 
-*TODO: Screenshot from the game*
+Pictures from the game:
+- [Start](https://github.com/winterroad/Memory-Game/blob/master/img/memoryGameScreenshot01.png)
+- [The End](https://github.com/winterroad/Memory-Game/blob/master/img/memoryGameScreenshot03.png)
 
 Great Cat Memory Game is a project for [Udacity Front-End Web Developer Nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001)
 
@@ -9,7 +11,7 @@ Great Cat Memory Game is a project for [Udacity Front-End Web Developer Nanodegr
 | Function     | Definition     |  Comments|
 | ------------- |-------------| -----|
 | Memory Game Logic   | Cards have been randomized, there is 2 each, game is over when all pairs have been found | Done. |
-| Congratulations pop-up-window    | When all pairs have been found pop-up window appears. It includes: congratulation-message, want to play again? - question, timer value and stars.      |   |
+| Congratulations pop-up-window    | When all pairs have been found pop-up window appears. It includes: congratulation-message, want to play again? - question, timer value and stars.      | Done. (Pop up/modal) maybe temporary.  |
 | Restart Game | A reset function resets the game board, the timer, and the star rating.    |  Done.  |
 | Star Rating / Points | 1 - 3 stars, 3 is best score. Ratings should depend on the moves/time it took to complete the game.      |  Done.  |
 | Timer | Timer starts when game starts and stops when all the pairs have been found.    |   Done. |

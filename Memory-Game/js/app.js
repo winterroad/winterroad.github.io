@@ -1,19 +1,21 @@
-//Game- variable does not change. Cards will be added to game.
+//Game- variable does not change. Cards will be added to GAME.
 const GAME = document.getElementById("game-container");
-const moveCounter = document.getElementById("moveCounter");
-const pairsCounter = document.getElementById("pairsCounter");
-const reset = document.getElementById("resetButton");
-const time = document.getElementById("time");
+//Counters will be the same during the game, so consts.
+const MOVECOUNTER = document.getElementById("moveCounter");
+const PAIRSCOUNTER = document.getElementById("pairsCounter");
+const RESET = document.getElementById("resetButton");
+const TIME = document.getElementById("time");
 
 //For modal, TODO: will be deleted when not needed anymore
-const popUp = document.querySelector(".popUpWindow");
-const overlay = document.querySelector(".overlay");
-const pairsModal = document.getElementById("pairContainer");
-const movesModal = document.getElementById("moveContainer");
-const starsModal = document.getElementById("starContainer");
-const timeModal = document.getElementById("timeContainer");
-const playAgainModal = document.getElementById("playAgain");
-const closeModal = document.querySelector(".close");
+//TODO: Modal maybe removed in future. This is why modal and "tools" have ids and are seperate.
+const POPUP = document.querySelector(".popUpWindow");
+const OVERLAY = document.querySelector(".overlay");
+const PAIRSMODAL = document.getElementById("pairContainer");
+const MOVESMODAL = document.getElementById("moveContainer");
+const STARSMODAL = document.getElementById("starContainer");
+const TIMEMODAL = document.getElementById("timeContainer");
+const PLAYAGAINMODAL = document.getElementById("playAgain");
+const CLOSEMODAL = document.querySelector(".close");
 //END FOR MODAL
 
 //All pictures in an array. Includes all the needed html for the "card", including the card div that is the thing that "masks" the picture.
@@ -22,7 +24,7 @@ const closeModal = document.querySelector(".close");
 const ALL_PICTURES = [
   "<div class='card unselected'></div><img src='img/01-150.png' alt='Long haired kitten. Front profile.'>",
   "<div class='card unselected'></div><img src='img/02-150.png' alt='A cat and a bag.'>",
-  "<div class='card unselected'></div><img src='img/03-150.png' alt='A kittensleeps below shelf.'>",
+  "<div class='card unselected'></div><img src='img/03-150.png' alt='A kitten sleeps below shelf.'>",
   "<div class='card unselected'></div><img src='img/04-150.png' alt='A big happy cat sleeps on a carpet.'>",
   "<div class='card unselected'></div><img src='img/05-150.png' alt='Two cats eating beside each other.'>",
   "<div class='card unselected'></div><img src='img/06-150.png' alt='A young, mostly white cat sleeps on the sofa.'>",
@@ -37,9 +39,11 @@ const ALL_PICTURES = [
   "<div class='card unselected'></div><img src='img/15-150.png' alt='A big cat and a kitten sleep on sofa.'>",
   "<div class='card unselected'></div><img src='img/16-150.png' alt='A cat sleeps in front of a computer display.'>"
 ];
+
 //How many different cards . CardsInGame x 2 = all cards in the game.
 //TODO: Game asks how many pairs/cards.
 let cardsInGame = 8;
+//These global as needed in several functions
 let pairsFound;
 let stars;
 let startTime;
@@ -49,58 +53,30 @@ let move2;
 let pic1;
 let pic2;
 
+//Let's play
 playGame();
 
-function initialize(){
+function playGame(){
+  //initialize the game.
+  initialize();
+  //Add evenlistener to parent. With event delegation, no need to assign every child their own listener.
+  GAME.addEventListener('click', chooseCard);
+  //If the player wants to start the game from start.
+  RESET.addEventListener('click', resetGame);
+}
 
+//Initialize: select images, greate game, reset/update start values.
+function initialize(){
+  //Array for chosen pictures
   let chosenPictures = [];
   //Lets select the pictures (1 each). After this these are added to game in randomized order (2 each). -> function createGame().
   chosenPictures = generateRandomPictures(cardsInGame);
-
   //Create a game based  on these pictures.
   createGame(chosenPictures);
   //Reset move1, move2, pic1 and pic2 values.
   resetMovePic();
   //Updates the start values.
   updateStartValues();
-}
-
-function updateStartValues(){
-  //Reset values
-  startTime = Date.now();
-  pairsFound = 0;
-  pairsCounter.textContent = " " + pairsFound;
-  stars = 3;
-  paintTheStars(stars);
-  endTime = 0;
-  moves = 0;
-  moveCounter.textContent = " " + moves;
-  time.textContent = " ";
-
-}
-
-function paintTheStars(howMany){
-  switch (howMany) {
-    case 3:
-    starsCounter.textContent =  " ✰ ✰ ✰ ";
-    break;
-    case 2:
-    starsCounter.textContent =  " ✰ ✰ ";
-    break;
-    case 1:
-    starsCounter.textContent =  " ✰ ";
-    break;
-    case 0:
-    starsCounter.textContent =  0;
-    break;
-  }
-}
-
-function resetMovePic(){
-  move1 = "";
-  move2 = "";
-  pic1 = "";
-  pic2 = "";
 }
 
 //Generate chosenPicture-array (includes picture once).
@@ -143,20 +119,20 @@ function createGame(chosenPictures){
     //As the size of the array will change we have to check the size of the array, so we do not pick a index that is out of bounds.
     let allCardsSize = allCards.length;
     //SHUFFLE :)
-    //DOTO: all use randomize function that use for all randomizing needs.
+    //TODO: all use randomize function that can be used for all randomizing needs.
     //Lets randomize an index.
     index = Math.floor(Math.random()*allCardsSize);
-    //Lets remove the element with previous index, save it variable element.
+    //Lets remove the element with the index, save it variable element.
     let element = allCards.splice(index, 1);
     //Create a div that will be the card.
     let elementToBeAdded = document.createElement("div");
-    //Add a card - class, with this should work even with IE 8.
+    //Add a card-container - class, with this should work even with IE 8.
     if (elementToBeAdded.classList){
       elementToBeAdded.classList.add("card-container");
     //This is for older IE.
-    } else {
-        elementToBeAdded.className += ' ' + "card-container";
-      }
+    }else{
+      elementToBeAdded.className += ' ' + "card-container";
+    }
     //Add img info inside div.
     elementToBeAdded.innerHTML = element[0][0];
     //Add card div with img info to document fragment.
@@ -166,27 +142,48 @@ function createGame(chosenPictures){
   GAME.appendChild(fragment);
 }
 
-function playGame(){
-  //initialize the game.
-  initialize();
-  //Add evenlistener to parent. With event delegation, no need to assign every child their own listener.
-  GAME.addEventListener('click', chooseCard);
-  //If the player wants to start the game from start.
-  reset.addEventListener('click', resetGame);
+//Reset move and pic values.
+function resetMovePic(){
+  move1 = "";
+  move2 = "";
+  pic1 = "";
+  pic2 = "";
 }
 
-function resetGame(){
-  //Reset board, did not use remove (node.remove()) as IE does not understand it. So going old school.
-  while (GAME.firstChild) {
-    GAME.removeChild(GAME.firstChild);
+function updateStartValues(){
+  //Reset values
+  stars = 3;
+  moves = 0;
+  pairsFound = 0;
+  startTime = Date.now();
+  endTime = 0;
+  paintTheStars(stars);
+  //Update the values to the page
+  MOVECOUNTER.textContent = " " + moves;
+  PAIRSCOUNTER.textContent = " " + pairsFound;
+  TIME.textContent = " Time has started. ";
+}
+
+function paintTheStars(howMany){
+  //Use switch to "draw correct no of stars."
+  switch(howMany){
+    case 3:
+    starsCounter.textContent =  " ✰ ✰ ✰ ";
+    break;
+    case 2:
+    starsCounter.textContent =  " ✰ ✰ ";
+    break;
+    case 1:
+    starsCounter.textContent =  " ✰ ";
+    break;
+    case 0:
+    starsCounter.textContent =  0;
+    break;
   }
-  //create a new game
-  initialize();
 }
 
 //In choose a card-function card is revealed with class selected, if it is not .selected already.
-function chooseCard(e) {
-
+function chooseCard(e){
   if(/*e.target && e.target.nodeName == "DIV" &&*/ e.target.className == "card unselected"){
     e.target.classList.add("selected");
     e.target.classList.remove("unselected");
@@ -194,112 +191,126 @@ function chooseCard(e) {
     if(move1==""){
       move1 = e.target;
       pic1 = move1.nextSibling.alt;
-    } else if (move2=="") {
-        move2 = e.target;
-        pic2 = move2.nextSibling.alt;
-      }
-}
-    if (move1!="" && move2!=""){
-      //Setting timeout so player has time to see the other card.
+    }else if(move2==""){
+          move2 = e.target;
+          pic2 = move2.nextSibling.alt;
+     }
+  }
+  //If move1 and move2 have a value (2 cards selected). Then we have to check and uodated classes.
+  if (move1!="" && move2!=""){
+      //Setting timeout, so player has time to see the other card.
       setTimeout(updatingClasses, 300);
-    }
-}
-
-function checkScore(){
-  //Change to inline
-  if(moves >= (cardsInGame * 1.75) && moves < (cardsInGame * 2.5)){
-    starsCounter.textContent = " ✰ ✰ ";
-    stars = 2;
-  } else if(moves >= (cardsInGame * 2.5) && moves < (cardsInGame * 3.75)) {
-    starsCounter.textContent = " ✰ ";
-    stars = 1;
-  } else if(moves >= (cardsInGame * 3.75)) {
-    starsCounter.textContent = " " + 0 + " ";
-    stars = 0;
   }
 }
 
-function updatingClasses() {
-    //TODO: Make update moves function.
-    moves++;
-    moveCounter.textContent = " " + moves + " ";
-    checkScore();
-    move1.classList.remove("selected");
-    move2.classList.remove("selected");
+function updatingClasses(){
+  //TODO: Make update moves function.
+  moves++;
+  MOVECOUNTER.textContent = " " + moves + " ";
+  checkScore();
+  move1.classList.remove("selected");
+  move2.classList.remove("selected");
   //Check if the moves are the same picture.
   if(pic1 == pic2){
+      //Update the counter, add text to img elemnt and update class.
       pairsFound++;
       move1.classList.add("paired");
       move1.textContent = "paired";
       move2.classList.add("paired");
       move2.textContent = "paired";
-      pairsCounter.textContent = " " + pairsFound + " ";
-
+      PAIRSCOUNTER.textContent = " " + pairsFound + " ";
+      //Let's check if all pairs have been found, timeout so that the modal does appear too quickly.
       if(pairsFound >= cardsInGame) {
          setTimeout(allPairsFound, 500);
       }
-
-  } else {
+  //If the pictures were not a pair, cards go back unselected.
+  }else{
       move1.classList.add("unselected");
       move2.classList.add("unselected");
-    }
+  }
+  //Reset calues that new ones can optained (choose a card).
   resetMovePic();
+}
+
+//Logic for the score (stars).
+function checkScore(){
+  //TODO: Use the paint the stars function.
+  if(moves >= (cardsInGame * 1.75) && moves < (cardsInGame * 2.5)){
+    starsCounter.textContent = " ✰ ✰ ";
+    stars = 2;
+  }else if(moves >= (cardsInGame * 2.5) && moves < (cardsInGame * 3.75)){
+    starsCounter.textContent = " ✰ ";
+    stars = 1;
+  }else if(moves >= (cardsInGame * 3.75)){
+    starsCounter.textContent = " " + 0 + " ";
+    stars = 0;
   }
+}
 
-  function allPairsFound(){
-    let endTime = Date.now()-startTime;
-    endTime = convertMillis(endTime);
-    time.textContent = "You finished in " + endTime;
-    updateModalValues(pairsFound, moves, stars, endTime);
-    showPopUp();
+//When all pairs are found, endtime - starttime = time value. We update the modal values and the tools row time.
+function allPairsFound(){
+  let endTime = Date.now()-startTime;
+  endTime = convertMillis(endTime);
+  TIME.textContent = "You finished in " + endTime;
+  updateModalValues(pairsFound, moves, stars, endTime);
+  showPopUp();
+}
+
+function convertMillis(ms){
+  //Whole minutes are milliseconds divided by 60000 rounded by Math-floor to whole minutes.
+  let mins = Math.floor(ms/60000);
+  //Whole seconds are modulo (remainder) rounded by Math.floor down by nearest whole minute. The secs are reminder, when whole mins have been counted.
+  let secs = Math.floor(ms%60000/1000);
+  //If the seconds is under 10, then 0 before the secs, if secs is over 10, then add "nothing".
+  return (mins + ":" + (secs < 10 ? "0" : "") + secs);
+  //Above ternary returns the "same" as if/else below
+  //if(secs < 10){
+  //   return mins + ":" + "0" + secs;
+  //} else{
+  //   mins + ":" + secs;
+    //}
+}
+
+function resetGame(){
+  //Reset board, did not use remove (node.remove()) as IE does not understand it. So going old school.
+  while (GAME.firstChild){
+    GAME.removeChild(GAME.firstChild);
   }
-
-  function convertMillis(ms){
-    //Whole minutes are milliseconds divided by 60000 rounded by Math-floor to whole minutes.
-    let mins = Math.floor(ms/60000);
-    //Whole seconds are modulo (remainder) rounded by Math.floor down by nearest whole minute. The secs are reminder, when whole mins have been counted.
-    let secs = Math.floor(ms%60000/1000);
-
-    //If the seconds is under 10, then 0 before the secs, if secs is over 10, then add "nothing".
-    return (mins + ":" + (secs < 10 ? "0" : "") + secs);
-
-    //Above ternary returns the "same" as if/else below
-    //if(secs < 10){
-    //   return mins + ":" + "0" + secs;
-    //} else{
-    //   mins + ":" + secs;
-      //}
-  }
+  //create a new game
+  initialize();
+}
 
 //FOR MODAL, WILL BE DELETED WHEN NOT NEEDED ANYMORE
 function showPopUp(){
-  if (popUp.classList){
-    popUp.classList.add("showPopUp");
-    overlay.classList.add("showPopUp");
+  //When cuntion called show moda/pop up and overlay by adding class that has visibility: visible;
+  if(POPUP.classList){
+    POPUP.classList.add("showPopUp");
+    OVERLAY.classList.add("showPopUp");
   //This is for older IE.
-  } else {
-      popUp.className += ' ' + "showPopUp";
-      overlay.className += ' ' + "showPopUp";
-    }
-
-  playAgainModal.addEventListener('click', doPlayAgain);
-  closeModal.addEventListener('click', closePopUp);
+  }else{
+      POPUP.className += ' ' + "showPopUp";
+      OVERLAY.className += ' ' + "showPopUp";
+  }
+  //Event listeners for playAgain button and x for close.
+  PLAYAGAINMODAL.addEventListener('click', doPlayAgain);
+  CLOSEMODAL.addEventListener('click', closePopUp);
 }
 
+//Function for updating the values for modal/pop up
 function updateModalValues(pairs, moves, stars, time){
-  pairsModal.textContent = pairs;
-  movesModal.textContent = moves;
-  starsModal.textContent = stars;
-  timeModal.textContent = time;
-  //playAgainModal
-
+  PAIRSMODAL.textContent = pairs;
+  MOVESMODAL.textContent = moves;
+  STARSMODAL.textContent = stars;
+  TIMEMODAL.textContent = time;
 }
 
+//This removes the class that gives visibility to pop up/modal and overlay
 function closePopUp(){
-  popUp.classList.remove("showPopUp");
-  overlay.classList.remove("showPopUp");
+  POPUP.classList.remove("showPopUp");
+  OVERLAY.classList.remove("showPopUp");
 }
 
+//If player chooses to play again, game is resetted and pop up/modal is closed.
 function doPlayAgain(){
   resetGame();
   closePopUp();

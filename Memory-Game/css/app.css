@@ -7,7 +7,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* TODO- container that centers the element with flex.*/
+/* HEADER */
 header {
   width: 100%;
   text-align: center;
@@ -17,7 +17,42 @@ header {
   text-transform: uppercase;
 }
 
-  button{
+  h1 {
+    width:100%;
+    margin: 0;
+    padding: 1.5rem 0;
+    line-height: 1.25;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  /*TODO: own styles for tools-row
+  .tools{
+  TODO
+  }*/
+
+  #starsCounter {
+    display: inline-block;
+    width: 4.5rem;
+  }
+
+  #moveCounter {
+    display: inline-block;
+    width: 2.5rem;
+  }
+
+  #pairsCounter {
+    display: inline-block;
+    width: 2.5rem;
+  }
+
+  #time {
+    display: inline-block;
+    width: 12rem;
+  }
+
+  /* Button general element, eventhough there is a button in header, these styles are for all buttons. */
+  button {
     font-family: 'Montserrat', sans-serif;
     border: solid 2px #fff;
     border-radius: 5px;
@@ -32,12 +67,14 @@ header {
     -moz-transition: all 0.2s;
   }
 
-  button:hover{
+  button:hover {
     background-color: #fff;
     color: #4682b4;
+    cursor: pointer;
   }
 
-  button:active{
+  /* When button is clicked. */
+  button:active {
     border: solid 2px #fff;
     border-radius: 5px;
     padding: 0.5rem;
@@ -51,48 +88,8 @@ header {
     -moz-transition: all 0.2s;
   }
 
-  #starsCounter{
-    display: inline-block;
-    width: 5rem;
-    text-align: center;
-  }
-
-  #moveCounter{
-    display: inline-block;
-    width: 3rem;
-    text-align: center;
-  }
-
-  #pairsCounter{
-    display: inline-block;
-    width: 3rem;
-    text-align: center;
-  }
-
-  #time{
-    display: inline-block;
-    width: 12rem;
-    text-align: center;
-  }
-
-h1{
-  width:100%;
-  margin: 0;
-  padding: 1.5rem 0;
-  text-align: center;
-  line-height: 1.25;
-  color: #fff;
-  background-color: #4682b4;
-  font-weight: normal;
-  text-transform: uppercase;
-}
-
+/* THE GAME */
 #game-container {
-  background-color: #364652;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 90%;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -101,6 +98,7 @@ h1{
   justify-content: center;
   align-content: center;
   margin: 1rem auto;
+  width: 90%;
   border-left: 2px solid #fff;
   border-right: 2px solid #fff;
   border-radius: 5px;
@@ -122,27 +120,24 @@ h1{
     margin: 1rem;
   }
 
+    /* To use z-index, element has to be positioned. Element with higher z-index has higher stack index.*/
     .card {
       position: absolute;
       text-align: center;
       width: 100%;
       height: 100%;
       background-color: #a1b5d8;
-      /*opacity: 1;*/
       margin: 0;
     }
 
+      /* Card's classes that have z-index*/
       .unselected {
         z-index: 50;
         cursor: pointer;
-        /* Other possibility:
-        opacity: 1;*/
       }
 
       .selected {
         z-index: -1;
-        /*Other possibility:
-        opacity: 0;*/
       }
 
       .paired {
@@ -152,14 +147,15 @@ h1{
         font-weight: bold;
       }
 
+      /*When card is paired, this will affect the image.*/
       .paired + img {
         opacity: 0.5;
       }
 
+/* POP UP AND OVERLAY */
 .popUpWindow {
   width: 80%;
   min-height: 25rem;
-  /*height: 60%;*/
   border-radius: 5px;
   background: #e5e4e2;
   /* Will be shown on the top (0, 200)*/
@@ -172,30 +168,24 @@ h1{
   visibility: hidden;
 }
 
-  .text{
+  .text {
     margin: 1rem;
   }
 
-  /* TODO: */
-  button{
+/* Close "button" */
+  .close {
+    text-align: right;
+    font-size: 3rem;
+    padding: 0 1rem;
+ }
 
-  }
-
-  button:hover{
+/* When pointer is over the x */
+  .close:hover {
+    font-weight: bold;
     cursor: pointer;
   }
 
- .close{
-     text-align: right;
-     font-size: 3rem;
-     padding: 0 1rem;
- }
-
- .close:hover{
-  font-weight: bold;
-  cursor: pointer;
- }
-
+/* Overlay that will cover the screen when the "pop up window shows up".*/
  .overlay {
    width:100%;
    height: 100vh;
@@ -208,6 +198,7 @@ h1{
    visibility: hidden;
  }
 
+/* This will add visibility to overlay and "pop up window"*/
  .showPopUp {
-     visibility: visible;
+   visibility: visible;
  }
