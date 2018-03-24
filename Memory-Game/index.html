@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="img/winterroad_logo.png" rel="shortcut icon">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <link rel="stylesheet" href="css/app.css">
-  <title>Memory Game</title>
-</head>
-<body>
-    <div class="overlay"></div>
-    <h1>The Great Cat Memory Game</h1>
-    <div id="tools"> Score: <span id="starsCounter"></span>
-      Moves:<span id="moveCounter"></span>
-      Pairs found:<span id="pairsCounter"></span>
-      <span id="time"></span>
-      <button id="resetButton">Reset Game</button>
-      <!--TODO: Difficulty Levels
-      <button class="level">Easy</button>
-      <button class="level">Medium</button>
-      <button class="level selectedLevel">Hard</button>
-      -->
-    </div>
-    <div id="game-container">
-    <!-- Cards will go here -->
-    </div>
-    <!--TODO: Modal is just because of the requirement to have one. When this project is passed. This will be taken out
-    and only "tools"-row has needed functionality.-->
-    <div class="popUpWindow">
-      <div class="close">&times;</div>
-      <div class="text">
-      <h2>You have won!</h2>
-      <p>You have found <span id="pairContainer"></span> pairs! and used <span id="moveContainer"></span> moves.</p>
-      <p>Your statistics: stars: <span id="starContainer"></span> and your time was <span id="timeContainer"></span>.</p>
-      <p>You can do better. Do you want to play again?</p>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="img/winterroad_logo.png" rel="shortcut icon">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <title>Great Cat Memory Game</title>
+  </head>
+  <body>
+      <!-- Overlay will fill the whole screen, when the game has been won.-->
+      <div class="overlay"></div>
+      <header>
+        <h1>The Great Cat Memory Game</h1>
+        <!-- Counter-elements will have the info of the game.-->
+        <div class="tools"> Score: <span id="starsCounter"></span>
+          Moves:<span id="moveCounter"></span>
+          Pairs found:<span id="pairsCounter"></span>
+          <span id="time"></span>
+          <button id="resetButton">Reset Game</button>
+          <!--TODO: Difficulty Levels
+          <button class="level">Easy</button>
+          <button class="level">Medium</button>
+          <button class="level selectedLevel">Hard</button>
+          -->
+        </div>
+      </header>
+      <div id="game-container">
+      <!-- Cards will go here -->
       </div>
+      <!--TODO: Modal is just because of the requirement to have one. When this project is passed. This will be taken out
+      and only "tools"-row has needed functionality.-->
+      <div class="popUpWindow">
+        <div class="close">&times;</div>
+        <div class="text">
+        <h2>You have won!</h2>
+        <p>You have found <span id="pairContainer"></span> pairs! and used <span id="moveContainer"></span> moves.</p>
+        <p>Your statistics: stars: <span id="starContainer"></span> and your time was <span id="timeContainer"></span>.</p>
+        <p>Do you want to play again?</p>
+        </div>
       <button id="playAgain">I want to play again!</button>
-    </div>
-    <script src="js/app.js"></script>
-</body>
+      </div>
+      <script src="js/app.js"></script>
+  </body>
 </html>
