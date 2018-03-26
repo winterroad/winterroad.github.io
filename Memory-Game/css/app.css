@@ -229,8 +229,8 @@ header {
    -webkit-border-radius: 5px;
    border-radius: 5px;
    border: 2px solid #fff;
-   height: 50px; /*was 150*/
-   width: 50px; /*was 150*/
+   height: 60px; /*was 150*/
+   width: 60px; /*was 150*/
    background-color: #fff;
    color: #333;
    margin: 0.25rem;
@@ -248,8 +248,8 @@ header {
    }
 
      .card + img{
-       width: 50px;
-       heigh: 50px;
+       width: 60px;
+       heigh: 60px;
      }
 
      .paired {
