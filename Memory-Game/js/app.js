@@ -21,6 +21,7 @@ const CLOSEMODAL = document.querySelector(".close");
 //All pictures in an array. Includes all the needed html for the "card", including the card div that is the thing that "masks" the picture.
 //TODO: Put this info in a db, mongo db. Pictures fetched with randomized id, which is 1 to [max card id].
 //TODO: Smaller pictures, 100 X 100 as a option.
+
 const ALL_PICTURES = [
   "<div class='card unselected'></div><img src='img/01-150.png' alt='Long haired kitten. Front profile.'>",
   "<div class='card unselected'></div><img src='img/02-150.png' alt='A cat and a bag.'>",
@@ -52,6 +53,9 @@ let move1;
 let move2;
 let pic1;
 let pic2;
+let count;
+let timerValue;
+let countingUp
 
 //Let's play
 playGame();
@@ -155,13 +159,15 @@ function updateStartValues(){
   stars = 3;
   moves = 0;
   pairsFound = 0;
-  startTime = Date.now();
-  endTime = 0;
+  /*startTime = Date.now();
+  endTime = 0;*/
+  count = 0;
   paintTheStars(stars);
   //Update the values to the page
   MOVECOUNTER.textContent = " " + moves;
   PAIRSCOUNTER.textContent = " " + pairsFound;
-  TIME.textContent = " Time has started. ";
+  TIME.textContent = convertCounts(count);
+  countingUp = setInterval(function(){ timer() }, 1000);
 }
 
 function paintTheStars(howMany){
@@ -180,6 +186,27 @@ function paintTheStars(howMany){
     starsCounter.textContent =  0;
     break;
   }
+}
+
+function timer(){
+  count++;
+  timerValue = convertCounts(count);
+  TIME.textContent = timerValue;
+}
+
+function convertCounts(c){
+  //Whole minutes are counts divided by 60 rounded by Math-floor to whole minutes.
+  let mins = Math.floor(c/60);
+  //Whole seconds are modulo (remainder) rounded by Math.floor. The secs are reminder, when whole mins have been counted.
+  let secs = Math.floor(c%60);
+  //If the seconds is under 10, then 0 before the secs, if secs is over 10, then add "nothing".
+  return (mins + " : " + (secs < 10 ? " 0" : "") + secs);
+  //Above ternary returns the "same" as if/else below
+  //if(secs < 10){
+  //   return mins + ":" + "0" + secs;
+  //} else{
+  //   mins + ":" + secs;
+    //}
 }
 
 //In choose a card-function card is revealed with class selected, if it is not .selected already.
@@ -247,28 +274,12 @@ function checkScore(){
   }
 }
 
-//When all pairs are found, endtime - starttime = time value. We update the modal values and the tools row time.
+//When all pairs are found,
 function allPairsFound(){
-  let endTime = Date.now()-startTime;
-  endTime = convertMillis(endTime);
-  TIME.textContent = "You finished in " + endTime;
-  updateModalValues(pairsFound, moves, stars, endTime);
+  TIME.textContent = timerValue;
+  clearInterval(countingUp);
+  updateModalValues(pairsFound, moves, stars, timerValue);
   showPopUp();
-}
-
-function convertMillis(ms){
-  //Whole minutes are milliseconds divided by 60000 rounded by Math-floor to whole minutes.
-  let mins = Math.floor(ms/60000);
-  //Whole seconds are modulo (remainder) rounded by Math.floor down by nearest whole minute. The secs are reminder, when whole mins have been counted.
-  let secs = Math.floor(ms%60000/1000);
-  //If the seconds is under 10, then 0 before the secs, if secs is over 10, then add "nothing".
-  return (mins + ":" + (secs < 10 ? "0" : "") + secs);
-  //Above ternary returns the "same" as if/else below
-  //if(secs < 10){
-  //   return mins + ":" + "0" + secs;
-  //} else{
-  //   mins + ":" + secs;
-    //}
 }
 
 function resetGame(){

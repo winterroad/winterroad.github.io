@@ -26,7 +26,7 @@ Great Cat Memory Game is a project for [Udacity Front-End Web Developer Nanodegr
 | (Cat) Pictures      | Differentiate cards  |  16 + |
 | Stars | For score    |    0-3 |
 | Moves | Stars are based on this.    |  One show moves - element   |
-| Start/End Time| To make a timer    |    1 each |
+| Counter | To make a timer    |    1  |
 | Modal | Includes scores and playAgain? which are required    |   1 |
 
 ## Style Requirements
@@ -43,13 +43,13 @@ Great Cat Memory Game is a project for [Udacity Front-End Web Developer Nanodegr
 * [X] Moves (start value) = 0, move is 2 cards "turned", view updated after every move.
 * [X] Pairs (start value) = 0, pairs checked after a move, if cards "match", view updated +1.
 * [X] Status: winning = false
-* [X] When game board ready start timer -> [set start time](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now)
+* [X] When game board ready start timer
 * [X] Move functionality: one move is 2 cards visible (2 cards clicked), classes = unselected, selected. If cards alt-texts match, class  paired. Counter updated.
 * [X] After 2 cards selected, check if alt-attribute is the same, feedback, cards back to unselected or add class paired.
 * [X] Check if all cards are pairedUp (paired counter).
 * [X] When pairsFound = CardsInGame -> modal
 * [X] If playAgain = yes, start game again (includes reset and init).
-* [X] If in any time player presses reset, game starts from the beginning and values (stars, moves, pairs, winning = false, start and end time = 0) are reset and cards will be randomized and new cards will be shown.
+* [X] If in any time player presses reset, game starts from the beginning and values (stars, moves, pairs, winning = false, time = 0) are reset and cards will be randomized and new cards will be shown.
 
 
 # Tech

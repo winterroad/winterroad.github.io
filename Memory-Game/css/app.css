@@ -21,35 +21,21 @@ header {
     width:100%;
     margin: 0;
     padding: 1.5rem 0;
-    line-height: 1.25;
+    line-height: 1.25rem;
     font-weight: normal;
     text-transform: uppercase;
   }
 
-  /*TODO: own styles for tools-row
+
   .tools{
-  TODO
-  }*/
 
-  #starsCounter {
-    display: inline-block;
-    width: 4.5rem;
   }
 
-  #moveCounter {
+  .info {
     display: inline-block;
-    width: 2.5rem;
+    width: 3.5rem;
   }
 
-  #pairsCounter {
-    display: inline-block;
-    width: 2.5rem;
-  }
-
-  #time {
-    display: inline-block;
-    width: 12rem;
-  }
 
   /* Button general element, eventhough there is a button in header, these styles are for all buttons. */
   button {
@@ -113,8 +99,8 @@ header {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     border: 5px solid #fff;
-    height: 150px;
-    width: 150px;
+    height: 100px; /*was 150*/
+    width: 100px; /*was 150*/
     background-color: #fff;
     color: #333;
     margin: 1rem;
@@ -124,12 +110,17 @@ header {
     .card {
       position: absolute;
       text-align: center;
+      align-items: center;
       width: 100%;
       height: 100%;
       background-color: #a1b5d8;
       margin: 0;
     }
 
+      .card + img{
+        width: 100px;
+        heigh: 100px;
+      }
       /* Card's classes that have z-index*/
       .unselected {
         z-index: 50;
@@ -202,3 +193,91 @@ header {
  .showPopUp {
    visibility: visible;
  }
+
+
+ /* Mobile */
+@media only screen and (max-width: 600px)
+
+{
+  h1 {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .tools{
+    font-size: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  button{
+    display: block;
+    font-size: 0.5rem;
+    padding: 0.25rem;
+    margin: 0.5rem auto;
+  }
+
+ .info{
+   width: 2rem;
+ }
+
+ .card-container {
+   font-size: 0.75rem;
+   text-transform: uppercase;
+   position: relative;
+   overflow: hidden;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   border-radius: 5px;
+   border: 2px solid #fff;
+   height: 50px; /*was 150*/
+   width: 50px; /*was 150*/
+   background-color: #fff;
+   color: #333;
+   margin: 0.25rem;
+ }
+
+   /* To use z-index, element has to be positioned. Element with higher z-index has higher stack index.*/
+   .card {
+     position: absolute;
+     text-align: center;
+     align-items: center;
+     width: 100%;
+     height: 100%;
+     background-color: #a1b5d8;
+     margin: 0;
+   }
+
+     .card + img{
+       width: 50px;
+       heigh: 50px;
+     }
+
+     .paired {
+       font-size: 0.75rem;
+       text-align: center;
+       line-height: 3rem;
+       font-weight: bold;
+     }
+}
+
+/* Tablets */
+@media only screen and (min-width: 601px)
+
+{
+
+}
+
+/* Landscape tablets and such */
+@media only screen and (min-width: 768px)
+
+{
+
+}
+
+/* Desktops and other "large" devices */
+@media only screen and (min-width: 990px) and (min-width: 1199px)
+
+{
+
+
+}
