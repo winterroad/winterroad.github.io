@@ -20,7 +20,6 @@ const CLOSEMODAL = document.querySelector(".close");
 
 //All pictures in an array. Includes all the needed html for the "card", including the card div that is the thing that "masks" the picture.
 //TODO: Put this info in a db, mongo db. Pictures fetched with randomized id, which is 1 to [max card id].
-//TODO: Smaller pictures, 100 X 100 as a option.
 
 const ALL_PICTURES = [
   "<div class='card unselected'></div><img src='img/01-150.png' alt='Long haired kitten. Front profile.'>",
@@ -262,28 +261,24 @@ function updatingClasses(){
 //Logic for the score (stars).
 function checkScore(){
   //TODO: Use the paint the stars function.
-  if(moves >= (cardsInGame * 1.75) && moves < (cardsInGame * 2.5)){
+  if(moves >= (cardsInGame * 2) && moves < (cardsInGame * 2.75)){
     starsCounter.textContent = " ✰ ✰ ";
     stars = 2;
-  }else if(moves >= (cardsInGame * 2.5) && moves < (cardsInGame * 3.75)){
+  }else if(moves >= (cardsInGame * 2.75) && moves < (cardsInGame * 4)){
     starsCounter.textContent = " ✰ ";
     stars = 1;
-  }else if(moves >= (cardsInGame * 3.75)){
-    starsCounter.textContent = " " + 0 + " ";
-    stars = 0;
   }
 }
 
 //When all pairs are found,
 function allPairsFound(){
-  TIME.textContent = timerValue;
   clearInterval(countingUp);
   updateModalValues(pairsFound, moves, stars, timerValue);
   showPopUp();
 }
 
 function resetGame(){
-  //Reset board, did not use remove (node.remove()) as IE does not understand it. So going old school.
+  //Reset board, did not use remove (node.remove()) as IE does not understand it. So going old school. Remove child elements as long as there is one.
   while (GAME.firstChild){
     GAME.removeChild(GAME.firstChild);
   }

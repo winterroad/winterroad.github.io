@@ -26,14 +26,14 @@ header {
     text-transform: uppercase;
   }
 
-
-  .tools{
-
-  }
-
   .info {
     display: inline-block;
-    width: 3.5rem;
+    width: 3rem;
+  }
+
+  #starsCounter {
+    display: inline-block;
+    width: 4rem;
   }
 
 
@@ -84,13 +84,19 @@ header {
   justify-content: center;
   align-content: center;
   margin: 1rem auto;
-  width: 90%;
+  width: 95%;
   border-left: 2px solid #fff;
   border-right: 2px solid #fff;
   border-radius: 5px;
 }
 
+  /* CARDS */
   .card-container {
+    /* User select none, to stop "flicker" in iPhone*/
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     font-size: 0.75rem;
     text-transform: uppercase;
     position: relative;
@@ -99,8 +105,8 @@ header {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     border: 5px solid #fff;
-    height: 100px; /*was 150*/
-    width: 100px; /*was 150*/
+    height: 150px; /*was 150*/
+    width: 150px; /*was 150*/
     background-color: #fff;
     color: #333;
     margin: 1rem;
@@ -117,9 +123,9 @@ header {
       margin: 0;
     }
 
-      .card + img{
-        width: 100px;
-        heigh: 100px;
+      .card + img {
+        width: 150px;
+        heigh: 150px;
       }
       /* Card's classes that have z-index*/
       .unselected {
@@ -168,7 +174,7 @@ header {
     text-align: right;
     font-size: 3rem;
     padding: 0 1rem;
- }
+  }
 
 /* When pointer is over the x */
   .close:hover {
@@ -194,90 +200,162 @@ header {
    visibility: visible;
  }
 
+ /*Medium*/
+ @media only screen and (min-width: 700px) and (max-width: 1299px)
+  {
+     h1 {
+       padding: 0.75rem 0;
+       font-size: 1.5rem;
+     }
+
+     .tools {
+       font-size: 0.75rem;
+       padding: 0.25rem;
+     }
+
+     button {
+       font-size: 0.5rem;
+       padding: 0.25rem;
+       margin: 0.5rem auto;
+       letter-spacing: 0.1rem;
+     }
+
+     button:hover {
+       font-size: 0.5rem;
+       padding: 0.25rem;
+       margin: 0.5rem auto;
+       letter-spacing: 0.1rem;
+     }
+
+     button:active {
+       font-size: 0.5rem;
+       padding: 0.25rem;
+       margin: 0.5rem auto;
+       letter-spacing: 0.1rem;
+     }
+
+    .info {
+      width: 2.5rem;
+    }
+
+    #starsCounter {
+      width: 3rem;
+    }
+
+    .card-container {
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      border: 2px solid #fff;
+      height: 100px;
+      width: 100px;
+      background-color: #fff;
+      color: #333;
+      margin: 0.25rem;
+    }
+
+      /* To use z-index, element has to be positioned. Element with higher z-index has higher stack index.*/
+      .card {
+        position: absolute;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: #a1b5d8;
+        margin: 0;
+      }
+
+        .card + img {
+          width: 100px;
+          heigh: 100px;
+        }
+
+        .paired {
+          font-size: 1.25rem;
+          text-align: center;
+          line-height: 6rem;
+          font-weight: bold;
+        }
+
+  }
 
  /* Mobile */
-@media only screen and (max-width: 600px)
+@media only screen and (max-width: 699px)
 
-{
-  h1 {
-    padding: 0.5rem 0;
-    font-size: 1rem;
-  }
+  {
+    h1 {
+      padding: 0.5rem 0;
+      font-size: 1rem;
+    }
 
-  .tools{
-    font-size: 0.5rem;
-    padding: 0.25rem;
-  }
+    .tools {
+      font-size: 0.5rem;
+      padding: 0.25rem;
+    }
 
-  button{
-    display: block;
-    font-size: 0.5rem;
-    padding: 0.25rem;
-    margin: 0.5rem auto;
-  }
+    button {
+      font-size: 0.5rem;
+      padding: 0.25rem;
+      margin: 0.5rem auto;
+      letter-spacing: 0.1rem;
+    }
 
- .info{
-   width: 2rem;
- }
+    button:hover {
+      font-size: 0.5rem;
+      padding: 0.25rem;
+      margin: 0.5rem auto;
+      letter-spacing: 0.1rem;
+    }
 
- .card-container {
-   font-size: 0.75rem;
-   text-transform: uppercase;
-   position: relative;
-   overflow: hidden;
-   -moz-border-radius: 5px;
-   -webkit-border-radius: 5px;
-   border-radius: 5px;
-   border: 2px solid #fff;
-   height: 60px; /*was 150*/
-   width: 60px; /*was 150*/
-   background-color: #fff;
-   color: #333;
-   margin: 0.25rem;
- }
+    button:active {
+      font-size: 0.5rem;
+      padding: 0.25rem;
+      margin: 0.5rem auto;
+      letter-spacing: 0.1rem;
+    }
 
-   /* To use z-index, element has to be positioned. Element with higher z-index has higher stack index.*/
-   .card {
-     position: absolute;
-     text-align: center;
-     align-items: center;
-     width: 100%;
-     height: 100%;
-     background-color: #a1b5d8;
-     margin: 0;
+   .info {
+     width: 2rem;
    }
 
-     .card + img{
-       width: 60px;
-       heigh: 60px;
-     }
+   .card-container {
+     text-transform: uppercase;
+     position: relative;
+     overflow: hidden;
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     border-radius: 5px;
+     border: 2px solid #fff;
+     height: 60px;
+     width: 60px;
+     background-color: #fff;
+     color: #333;
+     margin: 0.25rem;
+   }
 
-     .paired {
-       font-size: 0.75rem;
+     /* To use z-index, element has to be positioned. Element with higher z-index has higher stack index.*/
+     .card {
+       position: absolute;
        text-align: center;
-       line-height: 3rem;
-       font-weight: bold;
+       align-items: center;
+       width: 100%;
+       height: 100%;
+       background-color: #a1b5d8;
+       margin: 0;
      }
-}
 
-/* Tablets */
-@media only screen and (min-width: 601px)
+       .card + img {
+         width: 60px;
+         heigh: 60px;
+       }
 
-{
-
-}
-
-/* Landscape tablets and such */
-@media only screen and (min-width: 768px)
-
-{
-
-}
-
-/* Desktops and other "large" devices */
-@media only screen and (min-width: 990px) and (min-width: 1199px)
-
-{
-
-
-}
+       .paired {
+         font-size: 0.75rem;
+         text-align: center;
+         line-height: 3.5rem;
+         font-weight: bold;
+       }
+  }
