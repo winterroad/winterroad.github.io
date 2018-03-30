@@ -285,6 +285,8 @@ function resetGame(){
   while (GAME.firstChild){
     GAME.removeChild(GAME.firstChild);
   }
+  //Stop timer
+  clearInterval(countingUp);
   //create a new game
   initialize();
 }
