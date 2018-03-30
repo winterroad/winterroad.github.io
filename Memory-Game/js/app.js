@@ -54,7 +54,7 @@ let pic1;
 let pic2;
 let count;
 let timerValue;
-let countingUp
+let countingUp;
 
 //Let's play
 playGame();
@@ -158,15 +158,14 @@ function updateStartValues(){
   stars = 3;
   moves = 0;
   pairsFound = 0;
-  /*startTime = Date.now();
-  endTime = 0;*/
   count = 0;
   paintTheStars(stars);
   //Update the values to the page
   MOVECOUNTER.textContent = " " + moves;
   PAIRSCOUNTER.textContent = " " + pairsFound;
   TIME.textContent = convertCounts(count);
-  countingUp = setInterval(function(){ timer() }, 1000);
+  //Every seconds (1000ms), timer function "starts" and adds 1 to count
+  countingUp = setInterval(function(){ timer(); }, 1000);
 }
 
 function paintTheStars(howMany){
@@ -188,8 +187,11 @@ function paintTheStars(howMany){
 }
 
 function timer(){
+  //Add 1 every second
   count++;
+  //Convert counts (secs) to right format
   timerValue = convertCounts(count);
+  //Display the timer value
   TIME.textContent = timerValue;
 }
 
@@ -272,6 +274,7 @@ function checkScore(){
 
 //When all pairs are found,
 function allPairsFound(){
+  //Stop timer
   clearInterval(countingUp);
   updateModalValues(pairsFound, moves, stars, timerValue);
   showPopUp();
