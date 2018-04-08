@@ -13,57 +13,58 @@
 <body>
   <header>
     <div class="headers">
-      <img class="logo" src="img/winterroad_logo.svg" alt="Winterroad logo">
+      <!-- TODO: MAKE A SIDEBAR TO OPEN, WHEN "BURGER" IS CLICKED -->
+      <div class="burger-container">
+          <div class="burger">
+            <span>&nbsp;</span>
+            <span>&nbsp;</span>
+            <span>&nbsp;</span>
+       </div>
+     </div>
       <h1>Winterroad Portfolio</h1>
-      <h3>Front-End Developer</h3>
+      <h3>Web Developer</h3>
     </div>
+    <!-- TODO: ADD SMALLER PICTURES -->
     <picture>
-      <source media="(min-width: 1750px)" srcset="img/kukka_cropped_1900.png" />
-      <source media="(min-width: 1250px)" srcset="img/kukka_cropped_1500.png" />
-      <source media="(min-width: 741px)" srcset="img/kukka_cropped_1000.png" />
-        <source media="(max-width: 740px)" srcset="img/kukka_cropped_800.png" />
-      <img class="header" src="img/kukka_cropped_1900.png" alt="Flower and flowerfly">
+      <source media="(min-width: 1750px)" srcset="img/kukka_cropped1900.png" />
+      <img class="header" src="img/kukka_cropped1900.png" alt="Flower and flowerfly">
     </picture>
   </header>
 
-    <h3 id="work-title">Featured Work</h3>
-    <div id="featured-work-container">
-      <section class="project">
-          <a href="https://winterroad.github.io/wbootcamp-colorGame/">
-            <picture>
-              <source media="(min-width: 1000px)" srcset="img/color-game-cropped-300.png" />
-              <source media="(min-width: 700px)" srcset="img/color-game-cropped-225.png" />
-              <img src="img/color-game-cropped-300.png" alt="Color Game -Project">
-            </picture>
-          </a>
-          <p>Color Game</p>
+
+  <div class="featured-work-container">
+    <h3 class="work-title">Featured Work</h3>
+    <!-- TODO: ADD SMALLER PROJECT-PICS (225 OR 250)-->
+    <section class="project">
+        <!-- Following project has been made "in" Colt Steele's Udemy course: Web development bootcamp. Made by me, instructions by Colt Steele. -->
+        <a href="https://winterroad.github.io/wbootcamp-colorGame/">
+            <img src="img/color-game-cropped-300.png" alt="Color Game -Project">
+        </a>
+        <p>Color Game</p>
+    </section>
+    <section class="project">
+        <a href="https://winterroad.github.io/animal-card/card.html">
+            <img src="img/animal-card-cropped-300.png" alt="Animal Card -Project">
+        </a>
+        <p>Animal Card</p>
       </section>
       <section class="project">
-          <a href="https://winterroad.github.io/animal-card/card.html">
-            <picture>
-              <source media="(min-width: 1000px)" srcset="img/animal-card-cropped-300.png" />
-              <source media="(min-width: 700px)" srcset="img/animal-card-cropped-225.png" />
-              <img src="img/animal-card-cropped-300.png" alt="Animal Card -Project">
-            </picture>
-          </a>
-          <p>Animal Card</p>
-        </section>
-        <section class="project">
-          <a href="https://winterroad.github.io/pixel-art-maker/pixelArtMaker.html">
-            <picture>
-              <source media="(min-width: 1000px)" srcset="img/pixel-art-maker-cropped-300.png" />
-              <source media="(min-width: 700px)" srcset="img/pixel-art-maker-cropped-225.png" />
-              <img src="img/pixel-art-maker-cropped-300.png" alt="Pixel Art Maker -Project">
-            </picture>
-          </a>
-          <p>Pixel Art Maker</p>
-        </section>
-    </div>
+        <a href="https://winterroad.github.io/pixel-art-maker/pixelArtMaker.html">
+            <img src="img/pixel-art-maker-cropped-300.png" alt="Pixel Art Maker -Project">
+        </a>
+        <p>Pixel Art Maker</p>
+      </section>
+  </div>
   <footer>
-    <div class="social">
-      <a href="https://github.com/winterroad"><i class="fab fa-github"></i></a><a href="https://www.linkedin.com/in/ulla-kaija-talvitie/"><i class="fab fa-linkedin"></i></a><a href="https://twitter.com/WinterRoadU"><i class="fab fa-twitter-square"></i></a><a href="https://www.instagram.com/winterroadu/"><i class="fab fa-instagram"></i></a>
-      <p>© Ulla-Kaija Talvitie - Winterroad - Last updated: <time datetime="2018-03-04">4.3.2018</time></p>
-    </div>
+      <div class="social">
+        <section class="social-ico"><a href="https://github.com/winterroad"><i class="fab fa-github"></i></a></section>
+        <section class="social-ico"><a href="https://www.linkedin.com/in/ulla-kaija-talvitie/"><i class="fab fa-linkedin"></i></a></section>
+        <section class="social-ico"><a href="https://twitter.com/WinterRoadU"><i class="fab fa-twitter-square"></i></a></section>
+        <section class="social-ico"><a href="https://www.instagram.com/winterroadu/"><i class="fab fa-instagram"></i></a></section>
+      </div>
+      <p>© Ulla-Kaija Talvitie - Winterroad - Last updated: <time datetime="2018-04-09">9.4.2018</time></p>
   </footer>
+  <script src="js/menu.js"></script>
+</div>
 </body>
 </html>
