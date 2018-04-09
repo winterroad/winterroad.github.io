@@ -3,8 +3,8 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  overflow-x: hidden;
   margin: 0;
+  overflow-x: hidden;
   padding: 0;
   text-align: center;
   text-transform: uppercase;
@@ -16,8 +16,8 @@ body {
 /* TODO: MAKE A SIDEBAR TO OPEN, WHEN "BURGER" IS CLICKED*/
 
 .burger-container {
-    width: 2rem;
     float: left;
+    width: 2rem;
 }
 
 .burger {
@@ -28,27 +28,27 @@ body {
 .burger span {
     background: #333;
     display: block;
-    width: 2rem;
     height: 0.3rem;
     margin-bottom: 0.4rem;
     position: relative;
     top: 0;
     transition: all ease-in-out 0.4s;
+    width: 2rem;
 }
 
 .burger-container.open span:nth-child(2) {
-    width: 0;
     opacity: 0;
+    width: 0;
 }
 
 .burger-container.open span:nth-child(3) {
-    transform: rotate(45deg);
     top: -0.70rem;
+    transform: rotate(45deg);
 }
 
 .burger-container.open span:nth-child(1) {
-    transform: rotate(-45deg);
     top: 0.70rem;
+    transform: rotate(-45deg);
 }
 
 /*MENU ENDS*/
@@ -62,6 +62,7 @@ body {
 
   h1 {
     font-size: 250%;
+    margin: 0.5rem auto;
   }
 
   .logo {
@@ -70,13 +71,13 @@ body {
   }
 
   .header {
-    border-top: solid 1px #333;
     border-bottom: solid 1px #333;
+    border-top: solid 1px #333;
     width: 100%;
   }
 
   .featured-work-container {
-    text-transform: uppercase;
+    align-content: space-around;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -84,24 +85,26 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: space-around;
+    text-transform: uppercase;
   }
 
-  h3 {
+  .work-title {
+    margin-top: 2.5rem;
     width: 100%;
-    margin: 1.5rem 0 2rem 0;
   }
 
     .project {
       font-size: 1rem;
+      height: 250px;
+      margin-top: 1rem;
       text-align: center;
-      width: 340px;
-      height: 275px;
+      width: 300px;
+
     }
 
     .featured-work-container p {
       font-size: 1.25rem;
-      margin: 0.25rem 0 1.25rem 0;
+      margin: 0.25rem 0 1rem 0;
     }
 
     .featured-work-container img {
@@ -130,7 +133,7 @@ body {
 
       .social-ico {
         width: 4rem;
-        margin: 2rem 0 1rem 0;
+        margin: 1rem 0;
       }
 
       a {
