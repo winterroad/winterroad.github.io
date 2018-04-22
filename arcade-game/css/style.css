@@ -1,0 +1,86 @@
+body {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.pinkOnes {
+  color: #FF69B4;
+  padding-right: 2rem;
+}
+
+/* POP UP AND OVERLAY */
+.popUpWindow {
+  width: 40%;
+  min-height: 15rem;
+  border-radius: 5px;
+  background: #e5e4e2;
+  /* Will be shown on the top (0, 200)*/
+  z-index: 200;
+  /* To keep the popup fixed on the screen */
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  text-align: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+  .text {
+    padding-top: 1rem;
+  }
+
+  button {
+    font-family: 'Montserrat', sans-serif;
+    border: solid 2px #fff;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: #4682b4;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.2rem;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+  }
+
+  button:hover {
+    background-color: #fff;
+    color: #4682b4;
+  }
+
+  /* When button is clicked. */
+  button:active {
+    border: solid 2px #fff;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: #4682b4;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.2rem;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+  }
+
+/* Overlay that will cover the screen when the "pop up window shows up".*/
+ .overlay {
+   width:100%;
+   height: 100vh;
+   opacity: 0.65;
+   top: 0px;
+   left: 0px;
+   position: fixed;
+   z-index: 100;
+   background-color: #000;
+   visibility: hidden;
+ }
+
+/* This will add visibility to overlay and "pop up window"*/
+ .showPopUp {
+   visibility: visible;
+ }
