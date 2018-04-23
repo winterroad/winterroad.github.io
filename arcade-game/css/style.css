@@ -6,10 +6,10 @@ body {
     text-transform: uppercase;
 }
 
-.pinkOnes {
-  color: #FF69B4;
-  padding-right: 2rem;
-}
+  .pinkOnes {
+    color: #FF69B4;
+    padding-right: 2rem;
+  }
 
 /* POP UP AND OVERLAY */
 .popUpWindow {

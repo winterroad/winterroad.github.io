@@ -38,7 +38,6 @@ Player.prototype.updateLives = function(){
     /* open pop up */
     showPopUp();
     break;
-  /* game over function, overlay, enemy empty, player null*/
   }
 };
 
@@ -58,11 +57,11 @@ function initialize(avatar){
 
 /* enemy constructor*/
 function Enemy(speed, x, y){
-  /*every enemy has speed, x- and y- coordinate* and "image"*/
+  /* every enemy has speed, x- and y- coordinate* and "image"/sprite */
   this.speed = speed;
   this.x = x;
   this.y = y;
-  /* Image for all enemies*/
+  /* Image for all enemies */
   this.sprite = 'images/enemy-bug.png';
 }
 
@@ -74,7 +73,7 @@ function createEnemies(num){
     /* create randoms: returns speed, x and y and they are set in one go as return
     statement returns an array */
     [speed, x, y] = createRandoms();
-    /* lets use the random values to create an enemy*/
+    /* lets use the random values to create an enemy */
     let enemy = new Enemy(speed, x, y);
     /* Add new enemy to the allEnemies array */
     allEnemies.push(enemy);
@@ -82,11 +81,11 @@ function createEnemies(num){
   return allEnemies;
 }
 
-/*randomize new values for new enemy and when the enemy is over the "border"*/
+/*randomize new values for new enemy and when the enemy is over the "border" */
 function createRandoms(){
-  /* x will be negative, so the enemy does not show up immediately*/
+  /* x will be negative, so the enemy does not show up immediately */
   let randomX = -50 - Math.floor(Math.random()*300);
-  /* we do not want enemies on the grass or on the "river"*/
+  /* we do not want enemies on the grass or on the "river": y = 50 - 225 */
   let randomY = 50 + Math.floor(Math.random() * 175);
   /* speed should be over 50, but not over 400*/
   let randomSpeed = 50 + Math.floor(Math.random()*350);
@@ -101,13 +100,13 @@ Enemy.prototype.update = function(dt){
     if(this.x < 500){
       this.x += (this.speed * dt);
     }
-    //check for going off canvas, "reset" enemy with new x and y inside the borders.
+    //check for going off canvas, "reset" enemy with new x and y.
     if(this.x >= 500){
       [this.speed, this.x, this.y] = createRandoms();
     }
-    /* check collision*/
+    /* check collision */
     /* Is the player approximately at the same loc at y-axis: */
-      if(Math.abs(this.y - player.y) < 50){
+      if(Math.abs(this.y - player.y) < 30){
         /* Is the player aprox. at the same loc at the x-axis */
         if(Math.abs(this.x - player. x) < 50){
           /* player is in enemy's "hitzone" -> crash */
@@ -126,7 +125,7 @@ function Player(avatar){
     this.x = 200;
     this.y = 400;
     this.sprite = avatar;
-    //For the "scoreBoard"
+    /* For the "scoreBoard" */
     this.lives = 3;
     this.points = 0;
 }
@@ -208,7 +207,7 @@ Player.prototype.handleInput  = function(key){
 };
 
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
