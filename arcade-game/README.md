@@ -13,13 +13,14 @@ Running the game on your own computer.
 $ git clone https://github.com/winterroad/udacity-fend-retro-arcade-game.git
 ```
 
-2. Open index.html on your browser (ie latest Chrome, Firefox, Opera).
+2. Open index.html on your browser (ie latest Chrome, Firefox, Opera, Safari).
 
 3. Play.
 
 OR
 
-1. Play live[https://winterroad.github.io/udacity-fend-retro-arcade-game]
+1. [Play live](https://winterroad.github.io/arcade-game/)
+
 (IE not supported)
 
 ## How to play
@@ -34,7 +35,8 @@ points by safely reaching the river.
 
 ## Browser
 
-Latest versions of Chrome, Opera, Firefox and Safari(?) supported. Internet Explorer is not suppported.
+Latest versions of Chrome, Opera, Firefox and Safari supported. Internet Explorer
+is not suppported.
 
 ## Tech
 
