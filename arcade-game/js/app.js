@@ -57,7 +57,7 @@ function Enemy(speed, x, y) {
     /* Image for all enemies */
     this.sprite = 'images/enemy-bug.png';
     this.width = 90;
-    this.height = 60;
+    this.height = 70;
 }
 
 /* function that calls the enemy constructor with how many enemies should created (num) */
@@ -209,7 +209,7 @@ Player.prototype.handleInput = function(key) {
                     this.y = 440;
                 }
                 break;
-                
+
             /* If something strange happens. */
             default:
                 console.log("Something strange happened.");
