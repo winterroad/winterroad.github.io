@@ -13,7 +13,3 @@ $ git clone https://github.com/winterroad/jasmine-testing-the-feed-reader.git
 ```
 
 2. Open index.html on your browser.
-
-OR
-
-1. [Check it live](https://winterroad.github.io/feed-reader/)
